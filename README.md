@@ -1,2 +1,2 @@
 # word-search-solver
-solves word searches
+solves word searches for you
