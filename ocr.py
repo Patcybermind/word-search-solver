@@ -36,7 +36,7 @@ def get_letters(img):
             cv2.waitKey(0)
         else:
             print("not detected\n")
-            detected = detected + "ND"
+            detected = detected + "ND\n"
 
 
     print("detected:\n" + detected)
