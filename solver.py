@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import pytesseract
 import ocr
+import engine
 
 img = cv2.imread("images/image.png")
 ocr_result = ocr.get_letters(img)
@@ -41,6 +42,18 @@ input("Press Enter to continue...")
 
 # read the table from the file
 file_to_read = open("table.txt", "r")
-ocr_result_table = file_to_read.read()
+corrected_ocr_result_table = file_to_read.read()
 file_to_read.close()
 
+print(corrected_ocr_result_table)
+corrected_ocr_result_table = corrected_ocr_result_table.replace(",", "")
+
+# transform the table to a 2d matrix
+word_matrix = []
+for i in range(len(corrected_ocr_result_table.split("\n"))):
+    word_matrix.append(list(corrected_ocr_result_table.split("\n")[i]))
+
+print(word_matrix)
+
+print(word_matrix[1][2])
+engine.solve(word_matrix)
