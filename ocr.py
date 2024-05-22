@@ -33,10 +33,10 @@ def get_letters(img):
             print(c)
             detected = detected + c
             cv2.imshow("segment", segment)
-            cv2.waitKey(0)
+            #cv2.waitKey(0)
         else:
             print("not detected\n")
-            detected = detected + "ND\n"
+            detected = detected + "7\n"
 
 
     print("detected:\n" + detected)
@@ -45,4 +45,4 @@ def get_letters(img):
 
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-    
+    return detected
