@@ -39,6 +39,7 @@ file_to_edit.close()
 # get user confirmation that all is correct
 print("Table written to table.txt you can replace the characters 7 with the correct characters.")
 input("Press Enter to continue...")
+cv2.destroyAllWindows()
 
 # read the table from the file
 file_to_read = open("table.txt", "r")
@@ -56,4 +57,4 @@ for i in range(len(corrected_ocr_result_table.split("\n"))):
 print(word_matrix)
 
 print(word_matrix[1][2])
-engine.solve(word_matrix)
+engine.solve(word_matrix, 'EMIC')

@@ -30,7 +30,7 @@ def get_letters(img):
 
             custom_config = r'-l eng --oem 3 --psm 10 -c tessedit_char_whitelist="ABCDEFGHIJKLMNOPQRSTUVWXYZ" '
             c = pytesseract.image_to_string(segment, config=custom_config)
-            print(c)
+            print(c, end=" ")
             detected = detected + c
             cv2.imshow("segment", segment)
             #cv2.waitKey(0)
@@ -43,6 +43,6 @@ def get_letters(img):
 
     cv2.imshow("img_contour", img_contour)
 
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    #cv2.waitKey(0)
+    #cv2.destroyAllWindows()
     return detected
