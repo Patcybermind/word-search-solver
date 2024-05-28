@@ -3,8 +3,15 @@ import numpy as np
 import pytesseract
 import ocr
 import engine
+import tkinter as tk
+from tkinter.filedialog import askopenfilename
 
-img = cv2.imread("images/image.png")
+tk.Tk().withdraw()
+
+image_filename = tk.filedialog.askopenfilename()
+print(image_filename)
+
+img = cv2.imread(image_filename)
 ocr_result, img_contour = ocr.get_letters(img)
 
 print('results:')
@@ -38,7 +45,7 @@ file_to_edit.close()
 
 # get user confirmation that all is correct
 
-print("Table written to table.txt you can replace the characters 7 with the correct characters. You can reference the image_contour.png to see the characters.")
+print("Table written to table.txt you can replace the characters 7 with the correct characters. You can reference the image_contour.png to see the characters and make sure to save the file once you are done.")
 input("Press Enter to continue...")
 
 
@@ -58,4 +65,7 @@ for i in range(len(corrected_ocr_result_table.split("\n"))):
     word_matrix.append(list(corrected_ocr_result_table.split("\n")[i]))
 
 
-engine.solve(word_matrix, 'EMIC')
+words_filename = tk.filedialog.askopenfilename()
+print(words_filename)
+for word in ocr.get_words(cv2.imread(words_filename)):
+    engine.solve(word_matrix, word)
