@@ -48,3 +48,18 @@ def get_letters(img):
     cv2.destroyAllWindows()
     
     return detected, img_contour
+
+def get_words(img):
+    # get the words from the wordsearch list of words
+    # Convert the image to gray scale
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+    # Use Tesseract to do OCR on the image
+    text = pytesseract.image_to_string(gray)
+
+    # Split the text into words
+    words = text.split()
+
+    return words
+
+#print(get_words(cv2.imread("images/words.png")))

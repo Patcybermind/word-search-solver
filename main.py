@@ -43,6 +43,7 @@ input("Press Enter to continue...")
 
 
 
+
 # read the table from the file
 file_to_read = open("table.txt", "r")
 corrected_ocr_result_table = file_to_read.read()
