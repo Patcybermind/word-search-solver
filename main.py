@@ -5,7 +5,7 @@ import ocr
 import engine
 
 img = cv2.imread("images/image.png")
-ocr_result = ocr.get_letters(img)
+ocr_result, img_contour = ocr.get_letters(img)
 
 print('results:')
 print(ocr_result)
@@ -37,9 +37,11 @@ file_to_edit.write(ocr_result_table)
 file_to_edit.close()
 
 # get user confirmation that all is correct
-print("Table written to table.txt you can replace the characters 7 with the correct characters.")
+
+print("Table written to table.txt you can replace the characters 7 with the correct characters. You can reference the image_contour.png to see the characters.")
 input("Press Enter to continue...")
-cv2.destroyAllWindows()
+
+
 
 # read the table from the file
 file_to_read = open("table.txt", "r")
@@ -54,7 +56,5 @@ word_matrix = []
 for i in range(len(corrected_ocr_result_table.split("\n"))):
     word_matrix.append(list(corrected_ocr_result_table.split("\n")[i]))
 
-print(word_matrix)
 
-print(word_matrix[1][2])
 engine.solve(word_matrix, 'EMIC')

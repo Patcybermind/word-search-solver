@@ -40,9 +40,11 @@ def get_letters(img):
 
 
     print("detected:\n" + detected)
+    print("press any key to continue")
 
     cv2.imshow("img_contour", img_contour)
-
-    #cv2.waitKey(0)
-    #cv2.destroyAllWindows()
-    return detected
+    cv2.imwrite("img_contour.png", img_contour)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    
+    return detected, img_contour
