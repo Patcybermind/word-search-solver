@@ -6,8 +6,15 @@ import pytesseract
 # source of the get letters code: https://stackoverflow.com/questions/61327857/how-to-extract-individual-letters-from-image-with-pytesseract
 
 def get_letters(img):
+    # https://tesseract-ocr.github.io/tessdoc/ImproveQuality#rescaling
+
+    # disables the dictionary
+    #pytesseract.load_system_dawg(False)
+    #pytesseract.load_system_words(False)
+    #pytesseract.load_freq_dawg(False)
     gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     thresholded_image = cv2.threshold(gray_image, 127, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
+    #thresholded_image = 
 
     items = cv2.findContours(thresholded_image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     contours = items[0] if len(items) == 2 else items[1]
@@ -50,6 +57,10 @@ def get_letters(img):
     return detected, img_contour
 
 def get_words(img):
+    # enables the dictionary
+    #pytesseract.load_system_dawg(True)
+    #pytesseract.load_system_words(True)
+    #pytesseract.load_freq_dawg(True)
     # get the words from the wordsearch list of words
     # Convert the image to gray scale
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)

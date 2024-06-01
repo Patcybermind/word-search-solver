@@ -8,6 +8,7 @@ from tkinter.filedialog import askopenfilename
 
 tk.Tk().withdraw()
 
+print("Please select the image of the wordsearch")
 image_filename = tk.filedialog.askopenfilename()
 print(image_filename)
 
@@ -64,7 +65,7 @@ word_matrix = []
 for i in range(len(corrected_ocr_result_table.split("\n"))):
     word_matrix.append(list(corrected_ocr_result_table.split("\n")[i]))
 
-
+print("Please select the image of the words")
 words_filename = tk.filedialog.askopenfilename()
 print(words_filename)
 for word in ocr.get_words(cv2.imread(words_filename)):
